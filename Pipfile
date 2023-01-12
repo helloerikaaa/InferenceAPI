@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+loguru = "*"
+numpy = "*"
+scikit-learn = "*"
+uvicorn = "*"
+gunicorn = "*"
+boto3 = "*"
+pytest = "*"
+requests = "*"
+pandas = "*"
+
+[dev-packages]
+black = "*"
+coverage = "*"
+pylint = "*"
+pre-commit = "*"
+
+[requires]
+python_version = "3.8"
