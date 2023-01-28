@@ -20,3 +20,7 @@ black:
 
 .PHONY: ci
 ci: precommit tests
+
+.PHONY: up
+up: 
+	docker-compose up
