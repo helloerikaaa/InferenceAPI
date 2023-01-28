@@ -9,13 +9,13 @@ from loguru import logger
 from app.consts.paths import ModelPaths
 from app.models.metadata import MetadataResult
 from app.models.prediction import PredictionResult
-from app.services.load_model import _load_local_model
+from app.services.load_model import load_local_model
 from app.models.payload import Payload, payload_to_list
 
 
 class PenguinsModel(object):
     def __init__(self):
-        self.model = _load_local_model(os.path.join(ModelPaths.artifacts, "model.pkl"))
+        self.model = load_local_model(os.path.join(ModelPaths.artifacts, "model.pkl"))
         self.meta = os.path.join(ModelPaths.artifacts, "metadata.json")
 
     def _pre_process(self, payload: Payload) -> List:
@@ -37,7 +37,6 @@ class PenguinsModel(object):
         model_metadata = MetadataResult(
             algorithm_name=meta["algorithm"],
             model_name=meta["model_name"],
-            version=meta["version"],
             metrics=meta["metrics"],
         )
 
@@ -55,7 +54,7 @@ class PenguinsModel(object):
         prediction_result = self.model.predict_proba(features)
         logger.info(f"Prediction of the two classes {prediction_result}")
 
-        return prediction_result.tolist()[0][1]
+        return prediction_result.tolist()[0][0]
 
     def predict(self, payload: Payload):
 
