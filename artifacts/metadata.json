@@ -1,0 +1,1 @@
+"{\n    \"algorithm\": \"LogisticRegression\",\n    \"model_name\": \"PenguinsClassifier\",\n    \"metrics\": {\n        \"AUC\": 0.9239316239316239\n    }\n}"
